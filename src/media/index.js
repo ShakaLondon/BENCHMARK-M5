@@ -126,51 +126,51 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// SEARCH BLOG POSTS
-router.get("/:id/blogs", 
-async (req, res, next) => {
-  try {
+// // SEARCH BLOG POSTS
+// router.get("/:id/reviews/:imdbID", 
+// async (req, res, next) => {
+//   try {
 
-    const fileAsBuffer = fs.readFileSync(mediaFilePath);
-    // read json file
-    const fileAsString = fileAsBuffer.toString();
-    // convert JSON to string
-    const fileAsJSONArray = JSON.parse(fileAsString);
-    // read as an array
+//     const fileAsBuffer = fs.readFileSync(mediaFilePath);
+//     // read json file
+//     const fileAsString = fileAsBuffer.toString();
+//     // convert JSON to string
+//     const fileAsJSONArray = JSON.parse(fileAsString);
+//     // read as an array
 
-    const media = fileAsJSONArray.find(media => media.id=== req.params.id)
+//     const media = fileAsJSONArray.find(media => media.id=== req.params.id)
 
-    if (!media){
-        res
-        .status(404)
-        .send({message: `Media with ${req.params.id} is not found!`});
-    }
+//     if (!media){
+//         res
+//         .status(404)
+//         .send({message: `Media with ${req.params.id} is not found!`});
+//     }
 
-    // res.send(media)
+//     // res.send(media)
 
 
 
-    const blogfileAsBuffer = fs.readFileSync(blogsFilePath);
+//     const blogfileAsBuffer = fs.readFileSync(blogsFilePath);
     
-    const blogfileAsString = blogfileAsBuffer.toString();
+//     const blogfileAsString = blogfileAsBuffer.toString();
     
-    const blogfileAsJSONArray = JSON.parse(blogfileAsString);
+//     const blogfileAsJSONArray = JSON.parse(blogfileAsString);
 
-    const matchingBlogEntry = blogfileAsJSONArray.filter(blog => blog.media.authID === req.params.id)
-    //  FILTER ARRAY TO FIND ENTRY MATCHING PARAM ID
+//     const matchingBlogEntry = blogfileAsJSONArray.filter(blog => blog.media.authID === req.params.id)
+//     //  FILTER ARRAY TO FIND ENTRY MATCHING PARAM ID
 
-    if (!matchingBlogEntry){
-        res
-        .status(404)
-        .send({message: `Media with ${req.params.id} is not found!`});
-    }
+//     if (!matchingBlogEntry){
+//         res
+//         .status(404)
+//         .send({message: `Media with ${req.params.id} is not found!`});
+//     }
 
-    res.send(media, matchingBlogEntry);
+//     res.send(media, matchingBlogEntry);
 
-  } catch (error) {
-    res.send(500).send({ message: error.message });
-  }
-});
+//   } catch (error) {
+//     res.send(500).send({ message: error.message });
+//   }
+// });
 
 // DELETE MEDIA
 
